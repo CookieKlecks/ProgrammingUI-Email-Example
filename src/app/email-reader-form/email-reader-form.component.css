@@ -1,12 +1,31 @@
 .email-reader {
-  max-width: 500px;
+  max-width: 900px;
   margin: auto;
+  padding: 30px 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .email-reader-form {
   display: flex;
   flex-direction: column;
   gap: 1ex;
+}
+
+.email-reader-list {
+}
+
+.email-reader-btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: center;
+}
+
+.email-reader-btn-group > .btn {
+  width: 100%;
 }
 
 .ng-invalid:not(form), .ng-invalid.required {
@@ -19,4 +38,11 @@
 
 .invalid-input {
   background-color: firebrick !important;
+}
+
+.btn:disabled {
+  cursor: not-allowed!important;
+  background-color: gray;
+  color: white;
+  border-color: gray;
 }

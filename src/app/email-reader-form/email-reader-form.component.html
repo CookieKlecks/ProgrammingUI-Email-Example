@@ -1,5 +1,7 @@
 <div class="email-reader">
+  <h1>Programming of UI - Exercise 2</h1>
   <form #emailForm="ngForm" class="email-reader-form">
+    <h2>Email Form</h2>
     <div [ngClass]="emailFrom.invalid && emailFrom.dirty ? 'was-validated' : ''">
       <label for="emailFrom">From:</label>
       <input class="form-control"
@@ -7,7 +9,7 @@
              name="emailFrom"
              id="emailFrom"
              placeholder="Enter Sender Email"
-             [(ngModel)]="email.from"
+             [(ngModel)]="currentEmail.from"
              #emailFrom="ngModel"
              appHighlightOnFocus
              email
@@ -31,7 +33,7 @@
       <label for="emailTo">To:</label>
       <input class="form-control"
              type="email"
-             [(ngModel)]="email.to"
+             [(ngModel)]="currentEmail.to"
              name="emailTo"
              id="emailTo"
              placeholder="Enter Receiving Email"
@@ -58,7 +60,7 @@
       <label for="emailSubject">Subject:</label>
       <input class="form-control"
              type="text"
-             [(ngModel)]="email.subject"
+             [(ngModel)]="currentEmail.subject"
              name="emailSubject"
              id="emailSubject"
              placeholder="Enter Subject"
@@ -88,29 +90,53 @@
     <div>
       <label for="emailBody">Body:</label>
       <textarea class="form-control"
-                [(ngModel)]="email.body"
+                [(ngModel)]="currentEmail.body"
                 name="emailBody"
                 id="emailBody"
+                rows="5"
                 appHighlightOnFocus
       ></textarea>
     </div>
+
+    <div class="email-reader-btn-group">
+      <button type="button"
+              class="btn btn-outline-primary"
+              (click)="send()"
+              [disabled]="emailForm.invalid"
+      >
+        Send
+      </button>
+      <button type="button"
+              class="btn btn-outline-danger"
+              (click)="reset()"
+      >
+        Clean
+      </button>
+    </div>
   </form>
+
+
   <div>
-    <div>
-      from: {{email.from}}
+    <h2>List of Emails</h2>
+    <div *ngIf="emailList.length === 0">
+      The list of emails is empty
     </div>
-    <div>
-      to: {{email.to}}
-    </div>
-    <div>
-      subject: {{email.subject}}
-    </div>
-    <div>
-      body: {{email.body}}
-    </div>
-  </div>
-  <div>
-    <button (click)="send()">Send</button>
-    <button (click)="reset()">Clean</button>
+    <table class="email-reader-email-list table"
+           *ngIf="!(emailList.length === 0)"
+    >
+      <thead>
+      <tr>
+        <th scope="col">To</th>
+        <th scope="col">Subject</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let mail of emailList;">
+        <td>{{mail.to}}</td>
+        <td>{{mail.subject}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

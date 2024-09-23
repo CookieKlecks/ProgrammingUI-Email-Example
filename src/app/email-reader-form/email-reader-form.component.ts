@@ -17,27 +17,28 @@ import {CommonModule, NgIf} from "@angular/common";
   styleUrl: './email-reader-form.component.css'
 })
 export class EmailReaderFormComponent implements OnInit {
-  email: Email;
+  currentEmail: Email;
+  emailList: Email[];
   @ViewChild('emailForm') emailForm: any;
 
   constructor() {
-    this.email = {
+    this.currentEmail = {
       body: "", from: "", subject: "", to: ""
     }
+    this.emailList = []
   }
 
   ngOnInit(): void {
-    this.email = {
+    this.currentEmail = {
       body: "", from: "", subject: "", to: ""
     }
+    this.emailList = []
   }
 
   send(): void {
-    alert(`Sending the following message:
-From: ${this.email.from}
-To: ${this.email.to}
-Subject: ${this.email.subject}
-Body: ${this.email.body}`)
+    this.emailList.push(Object.assign({}, this.currentEmail))
+    alert(`The email [${this.currentEmail.subject}] has been sent to [${this.currentEmail.to}]`)
+    this.reset()
   }
 
   reset(): void {
