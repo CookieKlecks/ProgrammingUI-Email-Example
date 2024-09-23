@@ -1,0 +1,116 @@
+<div class="email-reader">
+  <form #emailForm="ngForm" class="email-reader-form">
+    <div [ngClass]="emailFrom.invalid && emailFrom.dirty ? 'was-validated' : ''">
+      <label for="emailFrom">From:</label>
+      <input class="form-control"
+             type="email"
+             name="emailFrom"
+             id="emailFrom"
+             placeholder="Enter Sender Email"
+             [(ngModel)]="email.from"
+             #emailFrom="ngModel"
+             appHighlightOnFocus
+             email
+             required
+             [ngClass]="emailFrom.invalid && emailFrom.dirty ? 'invalid-input' : ''"
+      >
+      <small *ngIf="emailFrom.invalid && (emailFrom.dirty || emailFrom.touched)"
+             class="form-text invalid-feedback"
+             id="emailFromFeedback"
+      >
+        <div *ngIf="emailFrom.hasError('required')">
+          Please provide a sender email address.
+        </div>
+        <div *ngIf="emailFrom.hasError('email')">
+          Please provide a valid email address as sender.
+        </div>
+      </small>
+    </div>
+
+    <div [ngClass]="emailTo.invalid && emailTo.dirty ? 'was-validated' : ''">
+      <label for="emailTo">To:</label>
+      <input class="form-control"
+             type="email"
+             [(ngModel)]="email.to"
+             name="emailTo"
+             id="emailTo"
+             placeholder="Enter Receiving Email"
+             #emailTo="ngModel"
+             appHighlightOnFocus
+             email
+             required
+             [ngClass]="emailTo.invalid && emailTo.dirty ? 'invalid-input' : ''"
+      >
+      <small *ngIf="emailTo.invalid && (emailTo.dirty || emailTo.touched)"
+             class="form-text invalid-feedback"
+             id="emailToFeedback"
+      >
+        <div *ngIf="emailTo.hasError('required')">
+          Please provide a receiving email address.
+        </div>
+        <div *ngIf="emailTo.hasError('email')">
+          Please provide a valid email address as receiver.
+        </div>
+      </small>
+    </div>
+
+    <div [ngClass]="emailSubject.invalid && emailSubject.dirty ? 'was-validated' : ''">
+      <label for="emailSubject">Subject:</label>
+      <input class="form-control"
+             type="text"
+             [(ngModel)]="email.subject"
+             name="emailSubject"
+             id="emailSubject"
+             placeholder="Enter Subject"
+             #emailSubject="ngModel"
+             appHighlightOnFocus
+             required
+             minlength="10"
+             maxlength="50"
+             [ngClass]="emailSubject.invalid && emailSubject.dirty ? 'invalid-input' : ''"
+      >
+      <small *ngIf="emailSubject.invalid && (emailSubject.dirty || emailSubject.touched)"
+             class="form-text invalid-feedback"
+             id="emailSubjectFeedback"
+      >
+        <div *ngIf="emailSubject.hasError('required')">
+          Please provide a subject.
+        </div>
+        <div *ngIf="emailSubject.hasError('minlength')">
+          The subject must be at least 10 characters long.
+        </div>
+        <div *ngIf="emailSubject.hasError('maxlength')">
+          The subject must be at most 50 characters long.
+        </div>
+      </small>
+    </div>
+
+    <div>
+      <label for="emailBody">Body:</label>
+      <textarea class="form-control"
+                [(ngModel)]="email.body"
+                name="emailBody"
+                id="emailBody"
+                appHighlightOnFocus
+      ></textarea>
+    </div>
+  </form>
+  <div>
+    <div>
+      from: {{email.from}}
+    </div>
+    <div>
+      to: {{email.to}}
+    </div>
+    <div>
+      subject: {{email.subject}}
+    </div>
+    <div>
+      body: {{email.body}}
+    </div>
+  </div>
+  <div>
+    <button (click)="send()">Send</button>
+    <button (click)="reset()">Clean</button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.email-reader {
+  max-width: 500px;
+  margin: auto;
+}
+
+.email-reader-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1ex;
+}
+
+.ng-invalid:not(form), .ng-invalid.required {
+  border-left: yellow solid 10px !important;
+}
+
+.ng-valid[required], .ng-valid.required {
+  border-left: green solid 10px !important;
+}
+
+.invalid-input {
+  background-color: firebrick !important;
+}
