@@ -1,0 +1,46 @@
+<div>
+  <p>email-reader-basic works!</p>
+  <form #emailForm="ngForm">
+    <input class="form-control"
+           type="text"
+           [(ngModel)]="email.from"
+           name="emailFrom"
+           #emailFrom="ngModel"
+    >
+    <input class="form-control"
+           type="text"
+           [(ngModel)]="email.to"
+           name="emailTo"
+           #emailTo="ngModel"
+    >
+    <input class="form-control"
+           type="text"
+           [(ngModel)]="email.subject"
+           name="emailSubject"
+           #emailSubject="ngModel"
+    >
+    <textarea class="form-control"
+           [(ngModel)]="email.body"
+           name="emailBody"
+           #emailBody="ngModel"
+    ></textarea>
+  </form>
+  <div>
+    <div>
+      from: {{email.from}}
+    </div>
+    <div>
+      to: {{email.to}}
+    </div>
+    <div>
+      subject: {{email.subject}}
+    </div>
+    <div>
+      body: {{email.body}}
+    </div>
+  </div>
+  <div>
+    <button (click)="send()">Send</button>
+    <button (click)="reset()">Clean</button>
+  </div>
+</div>
