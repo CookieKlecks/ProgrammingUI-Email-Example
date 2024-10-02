@@ -3,6 +3,7 @@ import {Email} from "../interfaces/email";
 import {FormsModule} from "@angular/forms";
 
 const EMPTY_EMAIL: Email = {
+  id: 0,
   body: "", from: "", subject: "", to: ""
 }
 
@@ -21,12 +22,14 @@ export class EmailReaderBasicComponent implements OnInit {
 
   constructor() {
     this.email = {
+      id: 0,
       body: "", from: "", subject: "", to: ""
     }
   }
 
   ngOnInit(): void {
     this.email = {
+      id: 0,
       body: "", from: "", subject: "", to: ""
     }
   }

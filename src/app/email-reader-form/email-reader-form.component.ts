@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {Email} from "../interfaces/email";
 import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.directive";
 import {CommonModule, NgIf} from "@angular/common";
+import {EmailService} from "../services/email.service";
+import {EmailListComponent} from "../email-list/email-list.component";
 
 @Component({
   selector: 'app-email-reader-form',
@@ -11,33 +12,27 @@ import {CommonModule, NgIf} from "@angular/common";
     CommonModule,
     FormsModule,
     HighlightOnFocusDirective,
-    NgIf
+    NgIf,
+    EmailListComponent
   ],
   templateUrl: './email-reader-form.component.html',
   styleUrl: './email-reader-form.component.css'
 })
 export class EmailReaderFormComponent implements OnInit {
-  currentEmail: Email;
-  emailList: Email[];
+  from: string = "";
+  to: string = "";
+  subject: string = "";
+  body: string = ""
   @ViewChild('emailForm') emailForm: any;
 
-  constructor() {
-    this.currentEmail = {
-      body: "", from: "", subject: "", to: ""
-    }
-    this.emailList = []
-  }
+  constructor(public emailService: EmailService) {  }
 
-  ngOnInit(): void {
-    this.currentEmail = {
-      body: "", from: "", subject: "", to: ""
-    }
-    this.emailList = []
-  }
+  ngOnInit(): void {  }
 
   send(): void {
-    this.emailList.push(Object.assign({}, this.currentEmail))
-    alert(`The email [${this.currentEmail.subject}] has been sent to [${this.currentEmail.to}]`)
+
+    this.emailService.addEmail(this.from, this.to, this.subject, this.body)
+    alert(`The email [${this.subject}] has been sent to [${this.to}]`)
     this.reset()
   }
 

@@ -9,7 +9,7 @@
              name="emailFrom"
              id="emailFrom"
              placeholder="Enter Sender Email"
-             [(ngModel)]="currentEmail.from"
+             [(ngModel)]="from"
              #emailFrom="ngModel"
              appHighlightOnFocus
              email
@@ -33,7 +33,7 @@
       <label for="emailTo">To:</label>
       <input class="form-control"
              type="email"
-             [(ngModel)]="currentEmail.to"
+             [(ngModel)]="to"
              name="emailTo"
              id="emailTo"
              placeholder="Enter Receiving Email"
@@ -60,7 +60,7 @@
       <label for="emailSubject">Subject:</label>
       <input class="form-control"
              type="text"
-             [(ngModel)]="currentEmail.subject"
+             [(ngModel)]="subject"
              name="emailSubject"
              id="emailSubject"
              placeholder="Enter Subject"
@@ -90,7 +90,7 @@
     <div>
       <label for="emailBody">Body:</label>
       <textarea class="form-control"
-                [(ngModel)]="currentEmail.body"
+                [(ngModel)]="body"
                 name="emailBody"
                 id="emailBody"
                 rows="5"
