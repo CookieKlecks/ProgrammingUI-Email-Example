@@ -35,7 +35,15 @@ export class EmailListComponent {
     return this.getEmails().length;
   }
 
-  handleClickView(id: number) {
-    console.log(this.emailService.getById(id));
+  handleClickView(mailId: number) {
+    console.log(this.emailService.getById(mailId));
+  }
+
+  handleClickDelete(mailId: number) {
+    this.emailService.deleteById(mailId)
+  }
+
+  handleWriteEmail() {
+
   }
 }

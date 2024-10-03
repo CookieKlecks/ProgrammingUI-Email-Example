@@ -42,4 +42,8 @@ export class EmailService {
   public deleteAll() {
     this.emails = []
   }
+
+  public deleteById(id: number) {
+    this.emails = this.emails.filter(mail => !(mail.id === id))
+  }
 }

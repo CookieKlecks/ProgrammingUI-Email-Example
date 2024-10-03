@@ -1,4 +1,4 @@
-<div>
+<div class="EmailList">
   <h2>List of Emails</h2>
   <form class="EmailList-filter">
     <label for="filterText">Filter:</label>
@@ -37,12 +37,18 @@
       <td>{{ mail['from'] }}</td>
       <td>{{ mail['to'] }}</td>
       <td>{{ mail['subject'] }}</td>
-      <td>
+      <td class="btn-group">
         <button class="btn btn-outline-primary" (click)="handleClickView(mail['id'])">
           View
+        </button>
+        <button class="btn btn-outline-danger" (click)="handleClickDelete(mail['id'])">
+          Delete
         </button>
       </td>
     </tr>
     </tbody>
   </table>
+  <button class="btn btn-outline-primary" (click)="handleWriteEmail()">
+    Write Email
+  </button>
 </div>
