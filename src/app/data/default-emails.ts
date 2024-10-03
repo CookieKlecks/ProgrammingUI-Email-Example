@@ -25,6 +25,6 @@ export const defaultEmail3: Email = {
   id: 3,
   from: "eve@example.com",
   to: "frank@example.com",
-  subject: "Grab a coffee?",
-  body: "How about coffee tomorrow morning?"
+  subject: "Mail with no body",
+  body: ""
 };

@@ -1,0 +1,48 @@
+<div>
+  <h2>List of Emails</h2>
+  <form class="EmailList-filter">
+    <label for="filterText">Filter:</label>
+    <input class="form-control"
+           type="text"
+           name="filterText"
+           id="filterText"
+           placeholder="Enter text to filter the emails"
+           [(ngModel)]="filterText"
+    >
+    <input class="form-check"
+           type="checkbox"
+           name="hideNoBody"
+           id="hideNoBody"
+           [(ngModel)]="hideNoBody"
+    >
+    <label>Hide mails without body</label>
+  </form>
+  <div *ngIf="this.getNumEmails() === 0">
+    The list of emails is empty
+  </div>
+  <table class="email-reader-email-list table"
+         *ngIf="!(this.getNumEmails() === 0)"
+  >
+    <thead>
+    <tr>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Subject</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let mail of this.getEmails() | filterArrayImpure:filterText:(hideNoBody? ['body'] : []);">
+      <td>{{ mail['from'] }}</td>
+      <td>{{ mail['to'] }}</td>
+      <td>{{ mail['subject'] }}</td>
+      <td>
+        <button class="btn btn-outline-primary" (click)="handleClickView(mail['id'])">
+          View
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

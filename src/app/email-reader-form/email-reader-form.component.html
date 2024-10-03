@@ -114,29 +114,5 @@
       </button>
     </div>
   </form>
-
-
-  <div>
-    <h2>List of Emails</h2>
-    <div *ngIf="emailList.length === 0">
-      The list of emails is empty
-    </div>
-    <table class="email-reader-email-list table"
-           *ngIf="!(emailList.length === 0)"
-    >
-      <thead>
-      <tr>
-        <th scope="col">To</th>
-        <th scope="col">Subject</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <tr *ngFor="let mail of emailList;">
-        <td>{{mail.to}}</td>
-        <td>{{mail.subject}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+  <app-email-list></app-email-list>
 </div>
