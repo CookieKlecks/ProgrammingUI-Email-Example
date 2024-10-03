@@ -15,10 +15,10 @@ import {EmailListComponent} from "../email-list/email-list.component";
     NgIf,
     EmailListComponent
   ],
-  templateUrl: './email-reader-form.component.html',
-  styleUrl: './email-reader-form.component.css'
+  templateUrl: './email-form.component.html',
+  styleUrl: './email-form.component.css'
 })
-export class EmailReaderFormComponent implements OnInit {
+export class EmailFormComponent implements OnInit {
   from: string = "";
   to: string = "";
   subject: string = "";
@@ -32,13 +32,10 @@ export class EmailReaderFormComponent implements OnInit {
   send(): void {
 
     this.emailService.addEmail(this.from, this.to, this.subject, this.body)
-    alert(`The email [${this.subject}] has been sent to [${this.to}]`)
     this.reset()
   }
 
   reset(): void {
     this.emailForm.reset()
   }
-
-  protected readonly console = console;
 }

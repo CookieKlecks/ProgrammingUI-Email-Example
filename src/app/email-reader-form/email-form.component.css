@@ -1,8 +1,4 @@
 .email-reader {
-  max-width: 900px;
-  margin: auto;
-  padding: 30px 30px;
-
   display: flex;
   flex-direction: column;
   gap: 30px;
