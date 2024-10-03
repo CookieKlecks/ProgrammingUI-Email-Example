@@ -5,6 +5,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {FilterArrayImpurePipe} from "../pipes/filter-array-impure.pipe";
 import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.directive";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-email-list',
@@ -15,7 +16,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FilterArrayImpurePipe,
     HighlightOnFocusDirective,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './email-list.component.html',
   styleUrl: './email-list.component.css'
@@ -35,15 +37,7 @@ export class EmailListComponent {
     return this.getEmails().length;
   }
 
-  handleClickView(mailId: number) {
-    console.log(this.emailService.getById(mailId));
-  }
-
   handleClickDelete(mailId: number) {
     this.emailService.deleteById(mailId)
-  }
-
-  handleWriteEmail() {
-
   }
 }

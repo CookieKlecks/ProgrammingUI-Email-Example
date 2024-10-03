@@ -1,4 +1,4 @@
-<div class="email-reader">
+<div class="EmailForm">
   <h1>Programming of UI - Exercise 2</h1>
   <form #emailForm="ngForm" class="email-reader-form">
     <h2>Email Form</h2>
@@ -114,5 +114,9 @@
       </button>
     </div>
   </form>
-  <app-email-list></app-email-list>
+
+  <button class="btn btn-outline-primary EmailForm-btn-list"
+          [routerLink]="['/emails']">
+    View All Mails
+  </button>
 </div>

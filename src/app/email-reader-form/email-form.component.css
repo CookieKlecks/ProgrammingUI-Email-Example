@@ -1,4 +1,4 @@
-.email-reader {
+.EmailForm {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -8,9 +8,6 @@
   display: flex;
   flex-direction: column;
   gap: 1ex;
-}
-
-.email-reader-list {
 }
 
 .email-reader-btn-group {

@@ -20,7 +20,7 @@
   <div *ngIf="this.getNumEmails() === 0">
     The list of emails is empty
   </div>
-  <table class="email-reader-email-list table"
+  <table class="table"
          *ngIf="!(this.getNumEmails() === 0)"
   >
     <thead>
@@ -38,7 +38,7 @@
       <td>{{ mail['to'] }}</td>
       <td>{{ mail['subject'] }}</td>
       <td class="btn-group">
-        <button class="btn btn-outline-primary" (click)="handleClickView(mail['id'])">
+        <button class="btn btn-outline-primary" [routerLink]="['/email/', mail['id']]">
           View
         </button>
         <button class="btn btn-outline-danger" (click)="handleClickDelete(mail['id'])">
@@ -48,7 +48,7 @@
     </tr>
     </tbody>
   </table>
-  <button class="btn btn-outline-primary" (click)="handleWriteEmail()">
+  <button class="btn btn-outline-primary" [routerLink]="'/create/email'">
     Write Email
   </button>
 </div>

@@ -7,7 +7,7 @@ import {defaultEmail0, defaultEmail1, defaultEmail2, defaultEmail3} from "../dat
   providedIn: 'root'
 })
 export class EmailService {
-  private nextFreeId: number;
+  private nextFreeId: number = 0;
   private emails: Email[] = [];
 
   constructor() {

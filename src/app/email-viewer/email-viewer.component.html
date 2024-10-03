@@ -1,22 +1,42 @@
 <div class="EmailViewer">
   <h1>View Email</h1>
 
-  <table>
+  <div *ngIf="mail === null">
+    <p>
+      There is no email with the id '{{ this.currentId }}'.
+    </p>
+    <p>
+      Do you want to go to the list of available mails?
+    </p>
+  </div>
+
+  <table class="table"
+         *ngIf="mail !== null"
+  >
+    <tbody>
     <tr>
       <th scope="col">From:</th>
-      <td>{{this.mail.from}}</td>
+      <td>{{ this.mail?.from }}</td>
     </tr>
     <tr>
       <th scope="col">To:</th>
-      <td>{{this.mail.to}}</td>
+      <td>{{ this.mail?.to }}</td>
     </tr>
     <tr>
       <th scope="col">Subject:</th>
-      <td>{{this.mail.subject}}</td>
+      <td>{{ this.mail?.subject }}</td>
     </tr>
     <tr>
       <th scope="col">Body:</th>
-      <td>{{this.mail.body}}</td>
+      <td>
+        <pre>{{ this.mail?.body }}</pre>
+      </td>
     </tr>
+    </tbody>
   </table>
+
+  <button class="btn btn-outline-primary EmailViewer-btn-list"
+          [routerLink]="['/emails']">
+    View All Mails
+  </button>
 </div>

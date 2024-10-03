@@ -4,6 +4,7 @@ import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.direct
 import {CommonModule, NgIf} from "@angular/common";
 import {EmailService} from "../services/email.service";
 import {EmailListComponent} from "../email-list/email-list.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-email-reader-form',
@@ -13,7 +14,8 @@ import {EmailListComponent} from "../email-list/email-list.component";
     FormsModule,
     HighlightOnFocusDirective,
     NgIf,
-    EmailListComponent
+    EmailListComponent,
+    RouterLink
   ],
   templateUrl: './email-form.component.html',
   styleUrl: './email-form.component.css'
