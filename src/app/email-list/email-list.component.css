@@ -11,3 +11,7 @@
   align-items: center;
   gap: 1rem;
 }
+
+.EmailList-mail-btn-group {
+  width: 100%
+}
